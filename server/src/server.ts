@@ -4,8 +4,9 @@ import controllers from './controllers'
 import middleware from './middleware'
 
 import logger from './util/logger'
+require('dotenv').config();
 
-const PORT = 4000 // TODO: make this configurable
+const PORT = process.env.SERVER_PORT // Done -> TODO: make this configurable
 
 function createServer(): express.Application {
   const server = express()
@@ -21,6 +22,6 @@ export default function startServer(): void {
 
   const server = createServer()
   server.listen(PORT, () => {
-    logger.info(`Server listening on port ${PORT} 🚀`)
+    logger.info(`Okay, server listening on port ${PORT} 🚀`)
   })
 }
