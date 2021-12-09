@@ -33,7 +33,7 @@ const Product = (props) => {
     }, [])
 
     const loadData = () => {
-        let url = `http://192.168.43.252:4000/products/all?page=${page}`; // Change to reflect the right base url
+        let url = `http://10.88.9.218:4000/products/all?page=${page}`; // Change to reflect the right base url
         fetch(url)
             .then(res => res.json())
             .then(responseJson => {
