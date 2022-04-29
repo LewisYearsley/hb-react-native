@@ -7,12 +7,9 @@ module.exports = {
     node: true,
   },
   rules: {
-    semi: ['error', 'never'],
-    'padding-line-between-statements': [
-      'warn',
-      {blankLine: 'always', prev: '*', next: 'return'},
-    ],
+    semi: ['error', 'always'],
+    'padding-line-between-statements': ['warn', { blankLine: 'always', prev: '*', next: 'return' }],
     '@typescript-eslint/member-delimiter-style': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
   },
-}
+};
