@@ -1,13 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import {
-  FlatList,
-  Image,
-  ListRenderItem,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import { FlatList, Image, ListRenderItem, Text, TouchableOpacity, View } from 'react-native';
 
 import { Product } from 'src/models';
 
@@ -27,16 +20,16 @@ const ProductList = ({ products, onSelectProduct = undefined }: ProductListProps
     const { name, images } = product;
 
     return (
-      <TouchableWithoutFeedback onPress={() => onSelectProduct?.(product)}>
+      <TouchableOpacity onPress={() => onSelectProduct?.(product)}>
         <View style={styles.item}>
           <Text style={styles.itemText}>{name}</Text>
           <Image style={styles.productImage} source={{ uri: `https:${images[0].list[0].path}` }} />
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     );
   };
 
-  return <FlatList data={products} renderItem={renderItem} />;
+  return <FlatList numColumns={2} data={products} renderItem={renderItem} />;
 };
 
 export { ProductList };
