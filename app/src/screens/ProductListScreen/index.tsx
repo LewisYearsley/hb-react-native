@@ -8,24 +8,27 @@ import { getProducts } from 'src/api';
 import { ProductList } from 'src/components';
 import { Product } from 'src/models';
 import { RootStackNavigation } from 'src/navigation';
+import usePagination from 'react-native-flatlist-pagination-hook';
 
 const ProductListScreen = (): ReactElement => {
-  const [products, setProducts] = useState<readonly Product[]>();
   const [errorMessage, setErrorMessage] = useState<string>();
 
   const navigation = useNavigation<RootStackNavigation>();
 
+  const { data, addData, onEndReached, pageIndex } = usePagination(10);
+
   useEffect(() => {
     const getProductsAsync = async () => {
       try {
-        setProducts(await getProducts());
+        await getProducts(pageIndex, 10).then((data: any) => {
+          addData(data);
+        });
       } catch (error) {
         setErrorMessage((error as Error).message);
       }
     };
-
     getProductsAsync();
-  }, []);
+  }, [pageIndex]);
 
   const onSelectProduct = (product: Product) => {
     console.log('Clicked Product');
@@ -35,11 +38,13 @@ const ProductListScreen = (): ReactElement => {
     return <Text>{errorMessage}</Text>;
   }
 
-  if (!products) {
+  if (!data || data.length == 0) {
     return <ActivityIndicator testID="activity-indicator" />;
   }
 
-  return <ProductList products={products} onSelectProduct={onSelectProduct} />;
+  return (
+    <ProductList products={data} onEndReached={onEndReached} onSelectProduct={onSelectProduct} />
+  );
 };
 
 export { ProductListScreen };

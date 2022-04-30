@@ -27,6 +27,7 @@ describe('<ProductListScreen />', () => {
 
   const products: readonly Product[] = [
     {
+      id: '1',
       name: 'Name #1',
       images: [
         {
@@ -38,6 +39,7 @@ describe('<ProductListScreen />', () => {
       ],
     },
     {
+      id: '2',
       name: 'Name #2',
       images: [
         {

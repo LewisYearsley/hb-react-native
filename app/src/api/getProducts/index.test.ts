@@ -11,6 +11,7 @@ describe('getProducts()', () => {
 
   const exampleProducts: readonly ProductResource[] = [
     {
+      id: '1',
       name: 'Name #1',
       images: [
         {
@@ -22,6 +23,7 @@ describe('getProducts()', () => {
       ],
     },
     {
+      id: '2',
       name: 'Name #2',
       images: [
         {
@@ -46,9 +48,10 @@ describe('getProducts()', () => {
         return response(context.json(exampleProducts));
       }),
     );
-    const actualProducts = await getProducts();
+    const actualProducts = await getProducts(0, 2);
     const expectedProducts: readonly Product[] = [
       {
+        id: '1',
         name: 'Name #1',
         images: [
           {
@@ -60,6 +63,7 @@ describe('getProducts()', () => {
         ],
       },
       {
+        id: '2',
         name: 'Name #2',
         images: [
           {

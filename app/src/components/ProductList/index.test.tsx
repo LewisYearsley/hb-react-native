@@ -5,8 +5,12 @@ import { Product } from 'src/models';
 import { ProductList } from '.';
 
 describe('<ProductList />', () => {
+  const onEndReached = jest.fn;
+  const onSelectProduct = jest.fn;
+
   const products: Product[] = [
     {
+      id: '1',
       name: 'Name #1',
       images: [
         {
@@ -18,6 +22,7 @@ describe('<ProductList />', () => {
       ],
     },
     {
+      id: '2',
       name: 'Name #2',
       images: [
         {
@@ -31,13 +36,21 @@ describe('<ProductList />', () => {
   ];
 
   it('renders message when product list is empty', () => {
-    const { getByText } = render(<ProductList products={[]} />);
+    const { getByText } = render(
+      <ProductList products={[]} onEndReached={onEndReached} onSelectProduct={onSelectProduct} />,
+    );
 
     expect(getByText('No products found.')).toBeTruthy();
   });
 
   it.each(products)('renders product list including "%s"', ({ name }) => {
-    const { getByText } = render(<ProductList products={products} />);
+    const { getByText } = render(
+      <ProductList
+        products={products}
+        onEndReached={onEndReached}
+        onSelectProduct={onSelectProduct}
+      />,
+    );
 
     expect(getByText(name)).toBeTruthy();
   });
