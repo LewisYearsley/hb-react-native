@@ -6,6 +6,10 @@ const toModel = (response: Array<ProductResource>): Array<Product> => {
     id: product.id,
     name: product.name,
     images: product.images,
+    price: product.price,
+    stock_status: product.stock_status,
+    rating: product.rating,
+    promotions: product.promotions,
   }));
 
   return products;

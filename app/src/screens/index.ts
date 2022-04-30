@@ -1,3 +1,4 @@
 import { ProductListScreen } from './ProductListScreen';
+import { ProductDetailScreen } from './ProductDetailsScreen';
 
-export { ProductListScreen };
+export { ProductListScreen, ProductDetailScreen };

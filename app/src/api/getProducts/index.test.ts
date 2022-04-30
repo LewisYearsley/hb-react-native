@@ -13,6 +13,10 @@ describe('getProducts()', () => {
     {
       id: '1',
       name: 'Name #1',
+      price: 1.99,
+      stock_status: 'INSTOCK',
+      rating: 5,
+      promotions: [{ text: 'penny' }],
       images: [
         {
           list: [
@@ -25,6 +29,10 @@ describe('getProducts()', () => {
     {
       id: '2',
       name: 'Name #2',
+      price: 1.99,
+      stock_status: 'INSTOCK',
+      rating: 5,
+      promotions: [{ text: 'penny' }],
       images: [
         {
           list: [
@@ -53,6 +61,14 @@ describe('getProducts()', () => {
       {
         id: '1',
         name: 'Name #1',
+        price: 1.99,
+        promotions: [
+          {
+            text: 'penny',
+          },
+        ],
+        stock_status: 'INSTOCK',
+        rating: 5,
         images: [
           {
             list: [
@@ -65,6 +81,14 @@ describe('getProducts()', () => {
       {
         id: '2',
         name: 'Name #2',
+        price: 1.99,
+        promotions: [
+          {
+            text: 'penny',
+          },
+        ],
+        stock_status: 'INSTOCK',
+        rating: 5,
         images: [
           {
             list: [

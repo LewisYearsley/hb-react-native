@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { ReactElement } from 'react';
 import { StatusBar } from 'react-native';
 import { RootStackParamList } from 'src/navigation';
-import { ProductListScreen } from 'src/screens';
+import { ProductListScreen, ProductDetailScreen } from 'src/screens';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -16,6 +16,7 @@ const App = (): ReactElement => (
         component={ProductListScreen}
         options={{ title: 'Products' }}
       />
+      <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
     </Stack.Navigator>
   </NavigationContainer>
 );

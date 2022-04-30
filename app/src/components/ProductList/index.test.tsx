@@ -12,6 +12,10 @@ describe('<ProductList />', () => {
     {
       id: '1',
       name: 'Name #1',
+      price: 1.99,
+      stock_status: 'INSTOCK',
+      rating: 5,
+      promotions: [{ text: 'penny' }],
       images: [
         {
           list: [
@@ -24,6 +28,10 @@ describe('<ProductList />', () => {
     {
       id: '2',
       name: 'Name #2',
+      price: 1.99,
+      stock_status: 'INSTOCK',
+      rating: 5,
+      promotions: [{ text: 'penny' }],
       images: [
         {
           list: [
@@ -53,5 +61,22 @@ describe('<ProductList />', () => {
     );
 
     expect(getByText(name)).toBeTruthy();
+  });
+
+  it.each(products)('raises event when user selects product "%j"', ({ name }) => {
+    const onSelectProduct = jest.fn();
+    const expectedProduct = products.find(product => product.name === name);
+
+    const { getByText } = render(
+      <ProductList
+        products={products}
+        onSelectProduct={onSelectProduct}
+        onEndReached={onEndReached}
+      />,
+    );
+
+    fireEvent.press(getByText(name));
+
+    expect(onSelectProduct).toHaveBeenCalledWith(expectedProduct);
   });
 });

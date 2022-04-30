@@ -31,7 +31,7 @@ const ProductListScreen = (): ReactElement => {
   }, [pageIndex]);
 
   const onSelectProduct = (product: Product) => {
-    console.log('Clicked Product');
+    navigation.navigate('ProductDetail', { product });
   };
 
   if (errorMessage) {
