@@ -8,10 +8,15 @@ yarn install
 
 ## Env
 
+Copy `.env.example` to `.env`
+
 ### Port
 
-Default port is set to `4000`
-To configure your port number please copy `.env.example` to `.env` and change the port number.
+Default port is set to `4000` you can configure this in the `env`.
+
+### Log Level
+
+Log level can be configured from the `.env`
 
 ## Running the app
 
